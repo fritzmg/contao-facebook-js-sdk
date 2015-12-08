@@ -24,9 +24,9 @@
 		"contao/core":"~3.0",
 		"contao-community-alliance/composer-installer":"*"
 	},
-    "replace": {
-        "contao-legacy/facebook_js_sdk": "self.version"
-    },
+	"replace": {
+		"contao-legacy/facebook_js_sdk": "self.version"
+	},
 	"extra":{
 		"contao":{
 			"sources":{
