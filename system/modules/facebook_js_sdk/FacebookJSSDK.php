@@ -41,8 +41,8 @@ class FacebookJSSDK extends \Frontend
 
         // set data
         $objTemplate->appId = $GLOBALS['TL_CONFIG']['fb_app_id'];
-        $objTemplate->lang = $lang;
         $objTemplate->version = $GLOBALS['TL_CONFIG']['fb_app_version'];
+        $objTemplate->lang = $lang;
 
         // search for body and inject template
         $strBuffer = preg_replace( "/(<body.*>)/", "$1".$objTemplate->parse(), $strBuffer );
