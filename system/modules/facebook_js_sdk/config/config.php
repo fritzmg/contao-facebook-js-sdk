@@ -23,4 +23,4 @@ $GLOBALS['TL_HOOKS']['outputBackendTemplate'][] = array( 'FacebookJSSDK', 'injec
 /**
  * Default config
  */
-$GLOBALS['TL_CONFIG']['fb_app_version'] = 'v2.7';
+$GLOBALS['TL_CONFIG']['fb_app_version'] = 'v2.8';
