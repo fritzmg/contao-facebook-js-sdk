@@ -5,7 +5,7 @@
  *
  * simple extension to automatically integrate the Facebook JavaScript SDK in the Contao frontend or backend
  * 
- * @copyright inspiredminds 2015
+ * @copyright inspiredminds 2015-2017
  * @package   facebook_js_sdk
  * @link      http://www.inspiredminds.at
  * @author    Fritz Michael Gschwantner <fmg@inspiredminds.at>
