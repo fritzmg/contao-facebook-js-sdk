@@ -130,6 +130,16 @@ class FacebookJSSDK
 
 
     /**
+     * Returns whether or not there is a valid config.
+     * @return boolean
+     */
+    public static function hasValidConfig()
+    {
+        return (self::getAppId() && self::getAppSecret());
+    }
+
+
+    /**
      * Returns the defined Facebook App ID in the root page or system settings.
      * @return string
      */
