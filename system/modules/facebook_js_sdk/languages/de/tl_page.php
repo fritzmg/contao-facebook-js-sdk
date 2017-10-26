@@ -9,4 +9,5 @@
  */
 
 
-$GLOBALS['TL_LANG']['tl_settings']['fb_sdk_frontend'] = array('Frontend Integration','Integriert das Facebook JavaScript SDK im Frontend.');
+$GLOBALS['TL_LANG']['tl_page']['facebook_legend'] = 'Facebook App';
+$GLOBALS['TL_LANG']['tl_page']['fb_sdk_frontend'] = array('Frontend Integration','Integriert das Facebook JavaScript SDK im Frontend.');
