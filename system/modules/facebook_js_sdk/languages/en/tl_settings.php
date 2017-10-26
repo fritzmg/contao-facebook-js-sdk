@@ -5,7 +5,7 @@
  *
  * @copyright  inspiredminds.at 2015
  * @author     Fritz Michael Gschwantner <fmg@inspiredminds.at>
- * @package    news_facebook
+ * @package    facebook_js_sdk
  */
 
 

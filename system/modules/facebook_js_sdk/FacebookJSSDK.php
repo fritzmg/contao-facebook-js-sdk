@@ -13,9 +13,14 @@
  */
 
 
+use Contao\Config;
+use Contao\FrontendTemplate;
+use Contao\PageModel;
+use Contao\System;
+
+
 class FacebookJSSDK
 {
-
     /**
      * Enable in backend.
      * @var boolean
@@ -44,14 +49,24 @@ class FacebookJSSDK
      */
     public function inject($strBuffer, $strTemplate)
     {
-        // check if this is the front end or it is enabled in back end
-        if (TL_MODE != 'FE' && !self::$blnBackend)
+        $strAppId = self::getAppId();
+        $strAppVersion = self::getAppVersion();
+
+        // check for appId and version in config
+        if (!$strAppId || !$strAppVersion)
         {
             return $strBuffer;
         }
 
-        // check for appId and version in config
-        if (!$GLOBALS['TL_CONFIG']['fb_app_id'] || !$GLOBALS['TL_CONFIG']['fb_app_version'])
+        // check if this is the backend and output in backend is not enabled
+        if (TL_MODE == 'BE' && !self::$blnBackend)
+        {
+            return $strBuffer;
+        }
+
+        // check frontend integration
+        global $objPage;
+        if (TL_MODE == 'FE' && $objPage && !PageModel::findById($objPage->rootId)->fb_sdk_frontend)
         {
             return $strBuffer;
         }
@@ -84,7 +99,7 @@ class FacebookJSSDK
             $lang = 'en_US';
         }
 
-        $languages = \System::getLanguages();
+        $languages = System::getLanguages();
 
         if (!isset($languages[$lang]))
         {
@@ -99,11 +114,11 @@ class FacebookJSSDK
         }
 
         // create the template
-        $objTemplate = new \FrontendTemplate('facebook-js-sdk');
+        $objTemplate = new FrontendTemplate('facebook-js-sdk');
 
         // set data
-        $objTemplate->appId = $GLOBALS['TL_CONFIG']['fb_app_id'];
-        $objTemplate->version = $GLOBALS['TL_CONFIG']['fb_app_version'];
+        $objTemplate->appId = $strAppId;
+        $objTemplate->version = $strAppVersion;
         $objTemplate->lang = $lang;
 
         // search for body and inject template
@@ -111,5 +126,56 @@ class FacebookJSSDK
 
         // return the buffer
         return $strBuffer;
+    }
+
+
+    /**
+     * Returns the defined Facebook App ID in the root page or system settings.
+     * @return string
+     */
+    public static function getAppId()
+    {
+        global $objPage;
+
+        if (TL_MODE == 'FE' && $objPage)
+        {
+            return PageModel::findById($objPage->rootId)->fb_app_id ?: Config::get('fb_app_id');
+        }
+
+        return Config::get('fb_app_id');
+    }
+
+
+    /**
+     * Returns the defined Facebook App secret in the root page or system settings.
+     * @return string
+     */
+    public static function getAppSecret()
+    {
+        global $objPage;
+
+        if (TL_MODE == 'FE' && $objPage)
+        {
+            return PageModel::findById($objPage->rootId)->fb_app_secret ?: Config::get('fb_app_secret');
+        }
+
+        return Config::get('fb_app_secret');
+    }
+
+
+    /**
+     * Returns the defined Facebook App API version in the root page or system settings.
+     * @return string
+     */
+    public static function getAppVersion()
+    {
+        global $objPage;
+
+        if (TL_MODE == 'FE' && $objPage)
+        {
+            return PageModel::findById($objPage->rootId)->fb_app_version ?: Config::get('fb_app_version');
+        }
+
+        return Config::get('fb_app_version');
     }
 }

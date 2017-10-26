@@ -40,5 +40,5 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['fb_app_version'] =  array
 (
 	'label'     => &$GLOBALS['TL_LANG']['tl_settings']['fb_app_version'],
 	'inputType' => 'text',
-	'eval'      => array('tl_class'=>'clr')
+	'eval'      => array('tl_class'=>'w50')
 );
