@@ -49,15 +49,6 @@ class FacebookJSSDK
      */
     public function inject($strBuffer, $strTemplate)
     {
-        $strAppId = self::getAppId();
-        $strAppVersion = self::getAppVersion();
-
-        // check for appId and version in config
-        if (!$strAppId || !$strAppVersion)
-        {
-            return $strBuffer;
-        }
-
         // check if this is the backend and output in backend is not enabled
         if (TL_MODE == 'BE' && !self::$blnBackend)
         {
@@ -67,6 +58,12 @@ class FacebookJSSDK
         // check frontend integration
         global $objPage;
         if (TL_MODE == 'FE' && $objPage && !PageModel::findById($objPage->rootId)->fb_sdk_frontend)
+        {
+            return $strBuffer;
+        }
+
+        // check for valid config
+        if (!self::hasValidConfig())
         {
             return $strBuffer;
         }
