@@ -129,8 +129,8 @@ class FacebookJSSDK
         $objTemplate = new FrontendTemplate('facebook-js-sdk');
 
         // set data
-        $objTemplate->appId = $strAppId;
-        $objTemplate->version = $strAppVersion;
+        $objTemplate->appId = self::getAppId();
+        $objTemplate->version = self::getAppVersion();
         $objTemplate->lang = $lang;
 
         // search for body and inject template
