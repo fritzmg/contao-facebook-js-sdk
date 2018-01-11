@@ -1,4 +1,4 @@
-[![](https://img.shields.io/maintenance/yes/2017.svg)](https://github.com/fritzmg/contao-facebook-js-sdk)
+[![](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/fritzmg/contao-facebook-js-sdk)
 [![](https://img.shields.io/packagist/v/fritzmg/contao-facebook-js-sdk.svg)](https://packagist.org/packages/fritzmg/contao-facebook-js-sdk)
 [![](https://img.shields.io/packagist/dt/fritzmg/contao-facebook-js-sdk.svg)](https://packagist.org/packages/fritzmg/contao-facebook-js-sdk)
 
