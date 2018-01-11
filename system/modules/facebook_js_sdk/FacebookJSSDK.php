@@ -5,7 +5,7 @@
  *
  * simple extension to automatically integrate the Facebook JavaScript SDK in the Contao frontend or backend
  * 
- * @copyright inspiredminds 2015-2017
+ * @copyright inspiredminds 2015-2018
  * @package   facebook_js_sdk
  * @link      http://www.inspiredminds.at
  * @author    Fritz Michael Gschwantner <fmg@inspiredminds.at>
@@ -22,20 +22,35 @@ use Contao\System;
 class FacebookJSSDK
 {
     /**
-     * Enable in backend.
+     * Force enable the injection.
      * @var boolean
      */
-    protected static $blnBackend = false;
+    protected static $blnForceEnable = false;
 
 
     /**
      * Static function to enable in back end.
      *
      * @return void
+     *
+     * @deprecated Deprecated since 3.2, to be removed in 4.0
      */
     public static function enableBackend()
     {
-        self::$blnBackend = true;
+        @trigger_error('Using FacebookJSSDK::enableBackend() has been deprecated and will no longer work in version 4.0.', E_USER_DEPRECATED);
+
+        self::forceEnable();
+    }
+
+
+    /**
+     * Static function to force enable the injection.
+     *
+     * @return void
+     */
+    public static function forceEnable()
+    {
+        self::$blnForceEnable = true;
     }
 
 
@@ -50,14 +65,14 @@ class FacebookJSSDK
     public function inject($strBuffer, $strTemplate)
     {
         // check if this is the backend and output in backend is not enabled
-        if (TL_MODE == 'BE' && !self::$blnBackend)
+        if (TL_MODE == 'BE' && !self::$blnForceEnable)
         {
             return $strBuffer;
         }
 
         // check frontend integration
         global $objPage;
-        if (TL_MODE == 'FE' && $objPage && !PageModel::findById($objPage->rootId)->fb_sdk_frontend)
+        if (TL_MODE == 'FE' && $objPage && !PageModel::findById($objPage->rootId)->fb_sdk_frontend && !self::$blnForceEnable)
         {
             return $strBuffer;
         }
