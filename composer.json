@@ -3,7 +3,7 @@
 	"description":"Automatically integrates the Facebook JavaScript SDK in the Contao frontend or backend",
 	"keywords":["contao", "facebook", "sdk", "javascript"],
 	"type":"contao-module",
-	"homepage":"http://www.inspiredminds.at",
+	"homepage":"https://github.com/fritzmg/contao-facebook-js-sdk",
 	"license":"GPL-2.0",
 	"authors":[
 		{
@@ -19,6 +19,12 @@
 		"source":"https://github.com/fritzmg/contao-facebook-js-sdk",
 		"forum":"https://community.contao.org/de"
 	},
+	"funding":[
+		{
+			"type":"github",
+			"url":"https://github.com/sponsors/fritzmg"
+		}
+	],
 	"require":{
 		"php":">=7.1",
 		"contao/core-bundle":"^4.0",
