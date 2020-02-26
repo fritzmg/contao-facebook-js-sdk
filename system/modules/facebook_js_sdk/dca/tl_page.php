@@ -13,9 +13,10 @@
  */
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
-use Contao\CoreBundle\DataContainer\PaletteNotFoundException;
+use Contao\CoreBundle\Exception\PaletteNotFoundException;
+use Contao\System;
 
-\System::loadLanguageFile('tl_settings');
+System::loadLanguageFile('tl_settings');
 
 
 /**
@@ -39,34 +40,30 @@ use Contao\CoreBundle\DataContainer\PaletteNotFoundException;
 /**
  * Fields
  */
-$GLOBALS['TL_DCA']['tl_page']['fields']['fb_app_id'] =  array
-(
+$GLOBALS['TL_DCA']['tl_page']['fields']['fb_app_id'] = [
 	'label'     => &$GLOBALS['TL_LANG']['tl_settings']['fb_app_id'],
 	'inputType' => 'text',
-	'eval'      => array('tl_class'=>'w50'),
-	'sql'       => "varchar(255) NOT NULL default ''"
-);
+	'eval'      => ['tl_class'=>'w50'],
+	'sql'       => "varchar(255) NOT NULL default ''",
+];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['fb_app_secret'] =  array
-(
+$GLOBALS['TL_DCA']['tl_page']['fields']['fb_app_secret'] = [
 	'label'     => &$GLOBALS['TL_LANG']['tl_settings']['fb_app_secret'],
 	'inputType' => 'text',
-	'eval'      => array('tl_class'=>'w50'),
-	'sql'       => "varchar(255) NOT NULL default ''"
-);
+	'eval'      => ['tl_class'=>'w50'],
+	'sql'       => "varchar(255) NOT NULL default ''",
+];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['fb_app_version'] =  array
-(
+$GLOBALS['TL_DCA']['tl_page']['fields']['fb_app_version'] = [
 	'label'     => &$GLOBALS['TL_LANG']['tl_settings']['fb_app_version'],
 	'inputType' => 'text',
-	'eval'      => array('tl_class'=>'w50'),
-	'sql'       => "varchar(8) NOT NULL default ''"
-);
+	'eval'      => ['tl_class'=>'w50'],
+	'sql'       => "varchar(8) NOT NULL default ''",
+];
 
-$GLOBALS['TL_DCA']['tl_page']['fields']['fb_sdk_frontend'] =  array
-(
+$GLOBALS['TL_DCA']['tl_page']['fields']['fb_sdk_frontend'] = [
 	'label'     => &$GLOBALS['TL_LANG']['tl_page']['fb_sdk_frontend'],
 	'inputType' => 'checkbox',
-	'eval'      => array('tl_class'=>'w50 m12'),
-	'sql'       => "char(1) NOT NULL default ''"
-);
+	'eval'      => ['tl_class'=>'w50 m12'],
+	'sql'       => "char(1) NOT NULL default ''",
+];
