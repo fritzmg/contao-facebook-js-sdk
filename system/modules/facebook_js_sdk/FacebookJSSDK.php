@@ -161,10 +161,10 @@ class FacebookJSSDK
 
         if (TL_MODE == 'FE' && $objPage)
         {
-            return PageModel::findById($objPage->rootId)->fb_app_id ?: Config::get('fb_app_id');
+            return PageModel::findById($objPage->rootId)->fb_app_id ?: (string) Config::get('fb_app_id');
         }
 
-        return Config::get('fb_app_id');
+        return (string) Config::get('fb_app_id');
     }
 
 
