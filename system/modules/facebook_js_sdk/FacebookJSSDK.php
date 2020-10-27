@@ -134,7 +134,7 @@ class FacebookJSSDK
         $objTemplate->lang = $lang;
 
         // search for body and inject template
-        $strBuffer = preg_replace("/(<body.*>)/", "$1".$objTemplate->parse(), $strBuffer);
+        $strBuffer = preg_replace("/(<body[^>]*>)/", "$1".$objTemplate->parse(), $strBuffer);
 
         // return the buffer
         return $strBuffer;
